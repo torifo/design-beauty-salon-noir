@@ -104,11 +104,18 @@
       position: fixed; inset: 0 0 auto;
       z-index: 50;
       display: flex; justify-content: space-between; align-items: center;
+      gap: clamp(1rem, 2vw, 2rem);
       min-height: 76px;
       padding: 1rem clamp(20px, 5vw, 80px);
       background: rgba(14, 10, 8, 0);
       border-bottom: 1px solid transparent;
       transition: background .6s var(--ease), border-color .6s var(--ease), backdrop-filter .6s var(--ease);
+    }
+    /* ナビ内の a 要素は折り返さない（base の word-break:auto-phrase を上書き） */
+    nav.top a {
+      white-space: nowrap;
+      word-break: keep-all;
+      text-wrap: nowrap;
     }
     nav.top.is-scrolled {
       background: rgba(14, 10, 8, .86);
@@ -922,6 +929,14 @@
     }
 
     /* ---------- Mobile (≤840px) ---------- */
+    /* タブレット帯：ナビが詰まらないよう gap と字間を緩める */
+    @media (max-width: 1080px) and (min-width: 841px) {
+      nav.top { padding: 1rem 1.6rem; }
+      .nav-brand { font-size: 1rem; letter-spacing: .28em; }
+      .nav-links { gap: 1.2rem; font-size: 10.5px; letter-spacing: .22em; }
+      .nav-cta { font-size: 10.5px; letter-spacing: .22em; }
+    }
+
     @media (max-width: 840px) {
       :root { scroll-padding-top: 72px; }
       html { scroll-padding-top: 72px; }
