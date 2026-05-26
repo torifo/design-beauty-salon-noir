@@ -70,6 +70,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 88px;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -922,6 +923,9 @@
 
     /* ---------- Mobile (≤840px) ---------- */
     @media (max-width: 840px) {
+      :root { scroll-padding-top: 72px; }
+      html { scroll-padding-top: 72px; }
+
       nav.top {
         min-height: 60px;
         padding: .8rem 1.25rem;
